@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Exemplo de lista de compra de jQuery e JSON</title>
+   <style>
+      
+      body{
+         max-width: auto;
+         margin: auto;
+      }
+
+      div {
+         width: 100%;
+         margin: 10px 0px;
+      }
+
+      table, td, tr, th {
+         border: 1px solid rgb(0, 0, 0);
+      }
+
+      #total{
+         font-weight: bold;
+      }
+   </style>
+   <script type="text/javascript" src="JQuery/jquery-3.4.1.min.js"></script>
+   <script type="text/javascript" language="javascript">
+   $(document).ready(function() {
+      $("#driver").click(function(event){
+
+          $.getJSON('JQuery/listaCompras.json', function(t) {
+               var total = 0;
+               $('#stage').html('<table>');
+               $('table').append('<tr><th>Produto</th><th>Valor</th></tr>');
+               $('table').append('<tr><td>' + t.produto1 + '</td><td>R$ ' + (t.valor1).toFixed(2)
+                  .replace('.', ',') + '</td></tr>');
+               total += parseFloat(t.valor1);
+               $('table').append('<tr><td>' + t.produto2 + '</td><td>R$ ' + (t.valor2).toFixed(2)
+                  .replace('.', ',') + '</td></tr>');
+               total += parseFloat(t.valor2);
+               $('table').append('<tr><td>' + t.produto3 + '</td><td>R$ ' + (t.valor3).toFixed(2)
+                  .replace('.', ',') + '</td></tr>');
+               total += parseFloat(t.valor3);
+               $('table').append('<tr><td>' + t.produto4 + '</td><td>R$ ' + (t.valor4).toFixed(2)
+                  .replace('.', ',') + '</td></tr>');
+               total += parseFloat(t.valor4);
+               $('table').append('<tr><td>' + t.produto5 + '</td><td>R$ ' + (t.valor5).toFixed(2)
+                  .replace('.', ',') + '</td></tr>');
+               total += parseFloat(t.valor5);
+               $('table').append('<tr><td>' + t.produto6 + '</td><td>R$ ' + (t.valor6).toFixed(2)
+                  .replace('.', ',') + '</td></tr>');
+               total += parseFloat(t.valor6);
+               $('table').append('<tr id="total"><td>Total</td><td>R$ ' + total.toFixed(2).replace(
+                  '.', ',') + '</td></tr>');
+            });
+         });
+      });
+   </script>
+</head>
+
+<body>
+   <td>Clique aqui para carregar os dados</td>
+   <div id="stage">
+      Produtos:
+   </div>
+   <input type="button" id="driver" value="Carregar " />
+</body>
+
+</html>

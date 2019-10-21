@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>jQuery e JSON</title>
+   <style>
+      body{
+         max-width: 1000px;
+         margin: auto;
+      }
+
+      div {
+         width: 100%;
+         margin: 10px 0px;
+      }
+
+      table, td, tr, th {
+         border: 1px solid black;
+      }
+
+      table {
+         border-collapse: collapse;
+      }
+
+      th {
+         padding: 10px;
+      }
+
+      td {
+         padding: 5px;
+      }
+
+      #total{
+         font-weight: bold;
+      }
+   </style>
+
+   <script type="text/javascript" src="JQuery/jquery-3.4.1.min.js"></script>
+   <script type="text/javascript" language="javascript">
+   $(document).ready(function() {
+      $("#driver").click(function(event){
+
+          $.getJSON('JQuery/listaCompra.json', function(t) {
+            var total = 0;
+            $('#stage').html('<table>');
+            $('table').append('<tr><th>Produto</th><th>Valor</th></tr>');
+            
+            $('table').append('<tr><td>' + t.produto1 + '</td><td>R$ ' + (t.valor1).toFixed(2).replace('.',',') + '</td></tr>');
+            total += parseFloat(t.valor1);
+            $('table').append('<tr><td>' + t.produto2 + '</td><td>R$ ' + (t.valor2).toFixed(2).replace('.',',') + '</td></tr>'); 
+            total += parseFloat(t.valor2);
+            $('table').append('<tr><td>' + t.produto3 + '</td><td>R$ ' + (t.valor3).toFixed(2).replace('.',',') + '</td></tr>');
+            total += parseFloat(t.valor3);
+            $('table').append('<tr><td>' + t.produto4 + '</td><td>R$ ' + (t.valor4).toFixed(2).replace('.',',') + '</td></tr>');
+            total += parseFloat(t.valor4); 
+            $('table').append('<tr><td>' + t.produto5 + '</td><td>R$ ' + (t.valor5).toFixed(2).replace('.',',') + '</td></tr>');
+            total += parseFloat(t.valor5);
+            $('table').append('<tr><td>' + t.produto6 + '</td><td>R$ ' + (t.valor6).toFixed(2).replace('.',',') + '</td></tr>');
+            total += parseFloat(t.valor6); 
+            $('table').append('<tr><td>' + t.produto7 + '</td><td>R$ ' + (t.valor7).toFixed(2).replace('.',',') + '</td></tr>');
+            total += parseFloat(t.valor7);
+            $('table').append('<tr><td>' + t.produto8 + '</td><td>R$ ' + (t.valor8).toFixed(2).replace('.',',') + '</td></tr>');
+            total += parseFloat(t.valor8); 
+            $('table').append('<tr><td>' + t.produto9 + '</td><td>R$ ' + (t.valor9).toFixed(2).replace('.',',') + '</td></tr>');
+            total += parseFloat(t.valor9);
+            $('table').append('<tr><td>' + t.produto10 + '</td><td>R$ ' + (t.valor10).toFixed(2).replace('.',',') + '</td></tr>');
+            total += parseFloat(t.valor10);
+            $('table').append('<tr id="total"><td>Total</td><td>R$ ' + total.toFixed(2).replace('.',',') + '</td></tr>');  
+
+          });
+      });
+   });
+   </script>
+   <meta charset="utf-8">
+</head>
+<body>
+   <td>Clique aqui para carregar os dados</td>
+   <div id="stage">
+          Produtos:
+   </div>
+   <input type="button" id="driver" value="Carregar " />
+</body>
+</html>

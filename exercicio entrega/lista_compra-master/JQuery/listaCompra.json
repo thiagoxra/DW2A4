@@ -1,0 +1,42 @@
+[
+  {
+    "produto": "Bis Extra",
+    "valor": "2.00"
+  },
+  {
+    "produto": "Coca-Cola 3L",
+    "valor": "7.99"
+  },
+  {
+    "produto": "Doritos",
+    "valor": 5.99
+  },
+  {
+    "produto": "Vinho Chileno Casillero del Diablo",
+    "valor": 49.95
+  },
+  {
+    "produto": "Cerveja Black Princess Weiss",
+    "valor": 14.00
+  },
+  {
+    "produto": "Amendoim",
+    "valor": 7.99
+  },
+  {
+    "produto": "Cerveja Vedett IPA",
+    "valor": 19.99
+  },
+  {
+    "produto": "Barra Chocolate Hershey's",
+    "valor": 3.99
+  },
+  {
+    "produto": "M&M's Amendoim",
+    "valor": 9.99
+  },
+  {
+    "produto": "Cerveja Baden Baden Pilsen",
+    "valor": 15.99
+  }
+]

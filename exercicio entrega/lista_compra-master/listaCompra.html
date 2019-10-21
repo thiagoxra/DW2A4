@@ -1,0 +1,107 @@
+﻿<html>
+<head>
+<title>jQuery e JSON</title>
+   <style>
+      body{
+         max-width: 1000px;
+         margin: auto;
+         font-family: 'Ubuntu', sans-serif;
+      }
+
+      div {
+         width: 100%;
+         margin: 10px 0px;
+      }
+
+      table, td, tr, th {
+         border: 1px solid black;
+      }
+
+      table {
+         border-collapse: collapse;
+      }
+
+      th {
+         padding: 10px;
+      }
+
+      tr.titulo{
+         background-color: #666666;
+         color: #FFFFFF;
+      }
+
+      tr.linhaImpar{
+         background-color: #CDCDCD;
+      }
+
+      tr.linhaPar{
+         background-color: #DEDEDE;
+      }
+
+      td {
+         padding: 5px;
+      }
+
+      #total{
+         font-weight: bold;
+      }
+
+      #driver {
+         border: 0;
+         width: 100px;
+         padding: 10px;
+         text-align: center;
+         border-radius: 5px;
+         margin-right: 10px;
+         color: #FFF;
+         background: #484860;
+      }
+
+      #driver:hover {
+         cursor: pointer;
+         background: #68688A;
+      }
+   </style>
+
+   <script type="text/javascript" src="JQuery/jquery-3.4.1.min.js"></script>
+   <script type="text/javascript" language="javascript">
+   $(document).ready(function() {
+      $("#driver").click(function(event){
+
+          $.getJSON('JQuery/listaCompra.json', function(lista) {
+            var total = 0;
+            $('#stage').html('<table>');
+            $('table').append('<tr class="titulo"><th>Produto</th><th>Valor</th></tr>');
+
+              var item;
+              var linha = 1;
+
+              $.each(lista, function (i, t) {
+                  if (linha % 2 == 0) {
+                      item = '<tr class="linhaPar"><td>' + t.produto + '</td><td>R$ ' + parseFloat(t.valor).toFixed(2).replace('.', ',') + '</td></tr>'
+                  } else {
+                      item = '<tr class="linhaImpar"><td>' + t.produto + '</td><td>R$ ' + parseFloat(t.valor).toFixed(2).replace('.', ',') + '</td></tr>'
+                  }
+                  total += parseFloat(t.valor);
+
+                  $('table').append(item);
+                  linha++;
+              });
+
+              $('table').append('<tr id="total"><td>Total</td><td>R$ ' + total.toFixed(2).replace('.', ',') + '</td></tr>');
+          });
+      });
+   });
+   </script>
+   <meta charset="utf-8">
+   <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+
+</head>
+<body>
+   <td>Clique aqui para carregar os dados</td>
+   <div id="stage">
+          Produtos:
+   </div>
+   <input type="button" id="driver" value="Carregar " />
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+
+<head>
+        <script type="text/javascript" src="JQuery/jquery-2.0.0.js"></script>
+</head>
+
+<body>
+    Escolha seu time de futebol:
+    <select name="Comics" multiple="multiple">
+        <option>Flamengo</option>
+        <option>São Paulo</option>
+        <option>Internacional</option>
+        <option>Gremio</option>
+    </select>
+    <div></div>
+    <script>
+        $("select").change(function () {
+            var timeEscolhido = "";
+            $("select option:selected").each(function () {
+                timeEscolhido += $(this).text() + " ";
+            });
+            alert("Você prefere o " + timeEscolhido);
+        })
+        .change();
+    </script>
+</body>
+
+</html>

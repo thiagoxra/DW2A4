@@ -1,0 +1,15 @@
+[
+{"produto": "FARINHA", "valor": 4.50},
+{"produto": "OVOS","valor": 11.99},
+{"produto": "LEITE", "valor": 4.99},
+{"produto": "FERMENTO", "valor": 8.50},
+{"produto": "AÇUCAR CONFEITEIRO", "valor": 11.00},
+{"produto": "CHOCOLATE", "valor": 8.99},
+{"produto": "CHOCOLATE AMARGO", "valor": 12.99},
+{"produto": "DOCE DE LEITE", "valor": 38},
+{"produto": "CHOCOLATE BRANCO", "valor":12.00 },
+{"produto": "REFRIGERANTE", "valor": 5.29},
+{"produto": "LEITE CONDENSADO", "valor": 6.25},
+{"produto": "GRANULADO", "valor": 3.99},
+{"produto": "CÔCO RALADO", "valor": 5}
+]

@@ -1,0 +1,58 @@
+<html>
+<head>
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exemplo de Jquery com ajax</title>
+
+
+    <style>
+        table, td, tr, th {
+            border: 1px solid rgb(0, 0, 0);
+         }
+   
+    </style>
+    <script  type= "text/javaScript" src="jQuery/jquery-3.4.1.min.js"></script>
+    <script>
+            $(document).ready(function() {
+                $("#driver").click(function(event){
+                  
+                    $.getJSON('listaCompras.json', function(t){
+                        var total = Number(t.valor1)+Number(t.valor2)+Number(t.valor3)+Number(t.valor4)+Number(t.valor5)+Number(t.valor6)+Number(t.valor7)+Number(t.valor8)+Number(t.valor9)+Number(t.valor10);
+                        $('#stage').html('<tr> <th>Produto</th> <th>Preço</th></tr>' );
+                        $('#stage').append('<tr> <th>'+ t.produto1 +'</th>'+ '<th>'+ t.valor1 +'</th> </tr>');
+                        $('#stage').append('<tr> <th>'+ t.produto2 +'</th>'+ '<th>'+ t.valor2 +'</th> </tr>');
+                        $('#stage').append('<tr> <th>'+ t.produto3 +'</th>'+ '<th>'+ t.valor3 +'</th> </tr>');
+                        $('#stage').append('<tr> <th>'+ t.produto4 +'</th>'+ '<th>'+ t.valor4 +'</th> </tr>');
+                        $('#stage').append('<tr> <th>'+ t.produto5 +'</th>'+ '<th>'+ t.valor5 +'</th> </tr>');
+                        $('#stage').append('<tr> <th>'+ t.produto6 +'</th>'+ '<th>'+ t.valor6 +'</th> </tr>');
+                        $('#stage').append('<tr> <th>'+ t.produto7 +'</th>'+ '<th>'+ t.valor7 +'</th> </tr>');
+                        $('#stage').append('<tr> <th>'+ t.produto8 +'</th>'+ '<th>'+ t.valor8 +'</th> </tr>');
+                        $('#stage').append('<tr> <th>'+ t.produto9 +'</th>'+ '<th>'+ t.valor9 +'</th> </tr>');
+                        $('#stage').append('<tr> <th>'+ t.produto10 +'</th>'+ '<th>'+ t.valor10 +'</th> </tr>');
+                        $('#stage').append('<tr> <th>'+ "total:" +'</th>'+ '<th>'+ total+'</th> </tr>');
+
+
+                    });
+                });
+            });
+        </script>
+    
+</head>
+<body>
+    <p>Clique para carregar o conteudo da outra pagina:</p> 
+    <div id="stage" style="backgound-color: orange;">
+        conteudo
+
+    </div>
+    <input type="button" id="driver" value="Carregar"/>
+
+
+</body>
+</html>
+
+
+
+
+

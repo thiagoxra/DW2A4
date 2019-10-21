@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery e JSON</title>
+    <script type="text/javascript" src="JQuery/jquery-2.0.0.js"></script>
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function() {
+            $("#driver").click(function(event) {
+                $.getJSON('dadosExemplo.json', function(t) {
+                    $('#stage').html('<p> Time Campe"ao: ' + t.time1 + '</p>');
+                    $('#stage').append('<p> Time vice Campeão: ' + t.time2 + '</p>');
+                    $('#stage').append('<p> Time que tentou ser Campeão: ' + t.time3 + '</p>');
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <p>Clique aqui para carregar os dados</p>
+    <div id="stage" style="background-color: red;">
+        Times:
+    </div>
+    <input type="button" id="driver" value="Carregar " />
+</body>
+
+</html>

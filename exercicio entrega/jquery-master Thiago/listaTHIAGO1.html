@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Exemplo de lista de compra de jQuery e JSON</title>
+   <style>
+      
+      body{
+         max-width: auto;
+         margin: auto;
+      }
+
+      div {
+         width: 100%;
+         margin: 10px 50px;
+      }
+
+      table, td, tr, th {
+         border: 2px solid rgb(0, 0, 0);
+
+      }
+
+      #total{
+         font-weight: bold;
+      }
+   </style>
+   <script type="text/javascript" src="JQuery/jquery-3.4.1.min.js"></script>
+   <script type="text/javascript" language="javascript">
+   $(document).ready(function() {
+      $("#driver").click(function(event){
+          $.getJSON('JQuery/listaCompras1.json', function(lista) {
+               var total = 0;
+               $('#stage').html('<table>');
+               $('table').append('<tr class="titulo"><th>Produto</th><th>Valor</th><tr>');
+
+               var item;
+               var linha =  1;
+
+               $.each(lista, function (i,t){
+                  item = '<tr><td>' + t.produto + '</td><td>R$ ' + parseFloat(t.valor).toFixed(2).replace('.', ',') + '</td></tr>';
+                  total += parseFloat(t.valor);
+                  $('table').append(item);
+                  linha++;
+               });
+               $('table').append('<tr id="total"><td>Total</td><td>R$ ' + total.toFixed(2).replace('.', ',') + '</td></tr>');  
+            });
+         });
+      });
+   </script>
+   
+</head>
+
+<body>
+   <td>Clique aqui para carregar os dados</td>
+   <div id="stage">
+      Produtos:
+   </div>
+   <input type="button" id="driver" value="Carregar " />
+</body>
+
+</html>

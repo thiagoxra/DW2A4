@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Exemplo de jQuery com Ajax</title>
+        <meta charset="utf-8"> 
+        <script type="text/javascript" src="JQuery/jquery-2.0.0.js"></script>
+        <script type="text/javascript" language="javascript">
+        $(document).ready(function(){
+            $("#driver").click(function(event){
+                $('#stage').load('conteudoCarregado.html')
+            });
+        });
+        </script>
+    </head>
+    <body>
+        <p>Clique para carregar o conteúdo da outra página:</p>
+        <div id="stage" style="background-color: red;">
+            Conteúdo!!!!
+        </div>
+        <input type="button" id="driver" value="Carregar"/>
+    </body>
+</html>
