@@ -13,35 +13,33 @@
          }
    
     </style>
-    <script  type= "text/javaScript" src="jQuery/jquery-3.4.1.min.js"></script>
-    <script>
-            $(document).ready(function() {
-                $("#driver").click(function(event){
-                  
-                    $.getJSON('listaCompras.json', function(t){
-                        var total = Number(t.valor1)+Number(t.valor2)+Number(t.valor3)+Number(t.valor4)+Number(t.valor5)+Number(t.valor6)+Number(t.valor7)+Number(t.valor8)+Number(t.valor9)+Number(t.valor10);
-                        $('#stage').html('<tr> <th>Produto</th> <th>Preço</th></tr>' );
-                        $('#stage').append('<tr> <th>'+ t.produto1 +'</th>'+ '<th>'+ t.valor1 +'</th> </tr>');
-                        $('#stage').append('<tr> <th>'+ t.produto2 +'</th>'+ '<th>'+ t.valor2 +'</th> </tr>');
-                        $('#stage').append('<tr> <th>'+ t.produto3 +'</th>'+ '<th>'+ t.valor3 +'</th> </tr>');
-                        $('#stage').append('<tr> <th>'+ t.produto4 +'</th>'+ '<th>'+ t.valor4 +'</th> </tr>');
-                        $('#stage').append('<tr> <th>'+ t.produto5 +'</th>'+ '<th>'+ t.valor5 +'</th> </tr>');
-                        $('#stage').append('<tr> <th>'+ t.produto6 +'</th>'+ '<th>'+ t.valor6 +'</th> </tr>');
-                        $('#stage').append('<tr> <th>'+ t.produto7 +'</th>'+ '<th>'+ t.valor7 +'</th> </tr>');
-                        $('#stage').append('<tr> <th>'+ t.produto8 +'</th>'+ '<th>'+ t.valor8 +'</th> </tr>');
-                        $('#stage').append('<tr> <th>'+ t.produto9 +'</th>'+ '<th>'+ t.valor9 +'</th> </tr>');
-                        $('#stage').append('<tr> <th>'+ t.produto10 +'</th>'+ '<th>'+ t.valor10 +'</th> </tr>');
-                        $('#stage').append('<tr> <th>'+ "total:" +'</th>'+ '<th>'+ total+'</th> </tr>');
+   <script type="text/javascript" src="JQuery/jquery-3.4.1.min.js"></script>
+   <script type="text/javascript" language="javascript">
+   $(document).ready(function() {
+      $("#driver").click(function(event){
+          $.getJSON('listaCompras.json', function(lista) {
+               var total = 0;
+               $('#stage').html('<table>');
+               $('table').append('<tr class="titulo"><th>Produto</th><th>Valor</th><tr>');
 
+               var item;
+               var linha =  1;
 
-                    });
-                });
+               $.each(lista, function (i,t){
+                  item = '<tr><td>' + t.produto + '</td><td>R$ ' + parseFloat(t.valor).toFixed(2).replace('.', ',') + '</td></tr>';
+                  total += parseFloat(t.valor);
+                  $('table').append(item);
+                  linha++;
+               });
+               $('table').append('<tr id="total"><td>Total</td><td>R$ ' + total.toFixed(2).replace('.', ',') + '</td></tr>');  
             });
-        </script>
+         });
+      });
+   </script>
     
 </head>
 <body>
-    <p>Clique para carregar o conteudo da outra pagina:</p> 
+    <p>Clique para ver a lista</p> 
     <div id="stage" style="backgound-color: orange;">
         conteudo
 
